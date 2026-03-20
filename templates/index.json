@@ -25,8 +25,57 @@
     "gallery_showcase_DTYN4t": {
       "type": "gallery-showcase",
       "blocks": {
+        "image_9JrGnk": {
+          "type": "image",
+          "name": "Imagen 8",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_g3ab3hg3ab3hg3ab.png",
+            "alt": ""
+          }
+        },
+        "image_PdFpPD": {
+          "type": "image",
+          "name": "Imagen 7",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_wkuopzwkuopzwkuo.png",
+            "alt": ""
+          }
+        },
+        "image_gbn3wi": {
+          "type": "image",
+          "name": "Imagen 6",
+          "settings": {
+            "image": "shopify://shop_images/poster-Mariano_paga_perro-1773966532550_d93f82fc-a659-487c-b3aa-1ac2bf0079ff.png",
+            "alt": ""
+          }
+        },
+        "image_hkKUdb": {
+          "type": "image",
+          "name": "Imagen 5",
+          "settings": {
+            "image": "shopify://shop_images/comiccrafter-viral-post.png",
+            "alt": ""
+          }
+        },
+        "image_8ibG7D": {
+          "type": "image",
+          "name": "Imagen 4",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_gzxppqgzxppqgzxp.png",
+            "alt": ""
+          }
+        },
+        "image_gjNTtF": {
+          "type": "image",
+          "name": "Imagen 3",
+          "settings": {
+            "image": "shopify://shop_images/imagen-1773958379240_221a98da-a9a9-432e-a2fd-78ae36d9e69c.png",
+            "alt": ""
+          }
+        },
         "image_n8UTem": {
           "type": "image",
+          "name": "Imagen 2",
           "settings": {
             "image": "shopify://shop_images/imagen-1773958201195_76367e28-04d2-498a-96ef-713b3020d44c.png",
             "alt": "Prueba"
@@ -41,6 +90,12 @@
         }
       },
       "block_order": [
+        "image_9JrGnk",
+        "image_PdFpPD",
+        "image_gbn3wi",
+        "image_hkKUdb",
+        "image_8ibG7D",
+        "image_gjNTtF",
         "image_n8UTem",
         "image_6YxQrF"
       ],
