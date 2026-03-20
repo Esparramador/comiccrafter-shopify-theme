@@ -22,6 +22,34 @@
         "cta2_text": "Ver Planes"
       }
     },
+    "gallery_showcase_DTYN4t": {
+      "type": "gallery-showcase",
+      "blocks": {
+        "image_n8UTem": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/imagen-1773958201195_76367e28-04d2-498a-96ef-713b3020d44c.png",
+            "alt": "Prueba"
+          }
+        },
+        "image_6YxQrF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/imagen-1773957722799_65e282bb-4eb0-4ab6-a6ea-e9f41ade964d.png",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_n8UTem",
+        "image_6YxQrF"
+      ],
+      "name": "Galería Showcase",
+      "settings": {
+        "eyebrow": "",
+        "title": "Diseñado con Comic Crafter"
+      }
+    },
     "app_download": {
       "type": "app-download",
       "settings": {
@@ -67,23 +95,15 @@
         "cta_url": "",
         "cta_text": "Comenzar Gratis"
       }
-    },
-    "gallery_showcase_DTYN4t": {
-      "type": "gallery-showcase",
-      "name": "Galería Showcase",
-      "settings": {
-        "eyebrow": "",
-        "title": "Diseñado con Comic Crafter"
-      }
     }
   },
   "order": [
     "hero",
+    "gallery_showcase_DTYN4t",
     "app_download",
     "featured",
     "stats",
     "features",
-    "cta",
-    "gallery_showcase_DTYN4t"
+    "cta"
   ]
 }
