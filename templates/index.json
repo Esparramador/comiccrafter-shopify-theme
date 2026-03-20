@@ -22,13 +22,6 @@
         "cta2_text": "Ver Planes"
       }
     },
-    "gallery": {
-      "type": "gallery-showcase",
-      "settings": {
-        "eyebrow": "Galería Dinámica",
-        "title": "Creado con Comic Crafter"
-      }
-    },
     "app_download": {
       "type": "app-download",
       "settings": {
@@ -74,15 +67,23 @@
         "cta_url": "",
         "cta_text": "Comenzar Gratis"
       }
+    },
+    "gallery_showcase_DTYN4t": {
+      "type": "gallery-showcase",
+      "name": "Galería Showcase",
+      "settings": {
+        "eyebrow": "",
+        "title": "Diseñado con Comic Crafter"
+      }
     }
   },
   "order": [
     "hero",
-    "gallery",
     "app_download",
     "featured",
     "stats",
     "features",
-    "cta"
+    "cta",
+    "gallery_showcase_DTYN4t"
   ]
 }
