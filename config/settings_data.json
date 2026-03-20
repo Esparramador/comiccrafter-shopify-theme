@@ -19,6 +19,15 @@
     "gallery_speed": 4,
     "gallery_opacity": 12,
     "gallery_enabled": true,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": false,
+          "announcement_text": "⚡ Envío gratis en pedidos superiores a 50€ — Crea con IA, materializa con nosotros"
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "15683396631634586217": {

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,7 +16,9 @@
         "title": "Crea Universos Enteros",
         "title_gradient": "con IA",
         "subtitle": "Cómics, Manga, Animación y Personajes 3D en segundos. Tu imaginación, nuestra inteligencia.",
+        "cta_url": "",
         "cta_text": "Empieza Gratis",
+        "cta2_url": "",
         "cta2_text": "Ver Planes"
       }
     },
@@ -18,17 +29,15 @@
         "title": "Creado con Comic Crafter"
       }
     },
-    "features": {
-      "type": "features-grid",
-      "settings": {}
-    },
     "app_download": {
       "type": "app-download",
       "settings": {
         "eyebrow": "Disponible en todas las plataformas",
         "title": "Lleva Comic Crafter",
         "title_gradient": "en tu bolsillo",
-        "description": "Instala la app directamente desde tu navegador. Sin tienda de apps, sin esperas. Crea cómics, modelos 3D y voces IA donde quieras."
+        "description": "Instala la app directamente desde tu navegador. Sin tienda de apps, sin esperas. Crea cómics, modelos 3D y voces IA donde quieras.",
+        "app_url": "",
+        "play_url": ""
       }
     },
     "featured": {
@@ -36,6 +45,9 @@
       "settings": {
         "eyebrow": "Lo Más Popular",
         "title": "Productos Destacados",
+        "title_gradient": "",
+        "subtitle": "",
+        "collection": "",
         "limit": 8,
         "show_view_all": true
       }
@@ -44,13 +56,33 @@
       "type": "stats-bar",
       "settings": {}
     },
+    "features": {
+      "type": "features-grid",
+      "settings": {
+        "badge_text": "Todas las herramientas que necesitas",
+        "title": "Un Estudio Completo de",
+        "title_gradient": "Creación con IA",
+        "subtitle": "Desde la idea inicial hasta la producción final. Cada herramienta potenciada por inteligencia artificial de última generación."
+      }
+    },
     "cta": {
       "type": "cta-banner",
       "settings": {
         "title": "Empieza a crear",
-        "title_gradient": "ahora mismo"
+        "title_gradient": "ahora mismo",
+        "subtitle": "",
+        "cta_url": "",
+        "cta_text": "Comenzar Gratis"
       }
     }
   },
-  "order": ["hero", "gallery", "features", "app_download", "featured", "stats", "cta"]
+  "order": [
+    "hero",
+    "gallery",
+    "app_download",
+    "featured",
+    "stats",
+    "features",
+    "cta"
+  ]
 }
