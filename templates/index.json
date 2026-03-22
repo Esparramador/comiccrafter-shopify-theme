@@ -12,7 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "eyebrow": "Comic Crafter IA Stories",
+        "eyebrow": "Comic Crafter",
         "title": "Crea Universos Enteros",
         "title_gradient": "Haz tus ideas realidad",
         "subtitle": "Cómics, Manga, Animación y Personajes 3D en segundos. Tu imaginación, nuestra inteligencia.",
@@ -25,6 +25,46 @@
     "gallery_showcase_DTYN4t": {
       "type": "gallery-showcase",
       "blocks": {
+        "image_gCGT3i": {
+          "type": "image",
+          "name": "Imagen 13",
+          "settings": {
+            "image": "shopify://shop_images/legacy_mesh.webp",
+            "alt": ""
+          }
+        },
+        "image_btwcYt": {
+          "type": "image",
+          "name": "Imagen 12",
+          "settings": {
+            "image": "shopify://shop_images/lumigrove---full-art.png",
+            "alt": ""
+          }
+        },
+        "image_Ygc3m3": {
+          "type": "image",
+          "name": "Imagen 11",
+          "settings": {
+            "image": "shopify://shop_images/logo-game-comic-crafter-1.png",
+            "alt": ""
+          }
+        },
+        "image_xyKCNX": {
+          "type": "image",
+          "name": "Imagen 10",
+          "settings": {
+            "image": "shopify://shop_images/logo-game-comic-crafter-2.png",
+            "alt": ""
+          }
+        },
+        "image_BkPW6k": {
+          "type": "image",
+          "name": "Imagen 9",
+          "settings": {
+            "image": "shopify://shop_images/logo-comic-crafter-2.png",
+            "alt": ""
+          }
+        },
         "image_9JrGnk": {
           "type": "image",
           "name": "Imagen 8",
@@ -90,6 +130,11 @@
         }
       },
       "block_order": [
+        "image_gCGT3i",
+        "image_btwcYt",
+        "image_Ygc3m3",
+        "image_xyKCNX",
+        "image_BkPW6k",
         "image_9JrGnk",
         "image_PdFpPD",
         "image_gbn3wi",
@@ -111,8 +156,8 @@
         "eyebrow": "Disponible en todas las plataformas",
         "title": "Lleva Comic Crafter",
         "title_gradient": "en tu bolsillo",
-        "description": "Instala la app directamente desde tu navegador. Sin tienda de apps, sin esperas. Crea cómics, modelos 3D y voces IA donde quieras.",
-        "app_url": "",
+        "description": "Instala la app directamente desde tu navegador.\nSin tienda de apps, sin esperas. \nCrea cómics, modelos 3D y voces IA donde quieras.",
+        "app_url": "https://comiccrafter.es",
         "play_url": ""
       }
     },
