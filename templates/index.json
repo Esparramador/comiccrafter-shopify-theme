@@ -150,17 +150,6 @@
         "title": "Diseñado con Comic Crafter"
       }
     },
-    "app_download": {
-      "type": "app-download",
-      "settings": {
-        "eyebrow": "Disponible en todas las plataformas",
-        "title": "Lleva Comic Crafter",
-        "title_gradient": "en tu bolsillo",
-        "description": "Instala la app directamente desde tu navegador.\nSin tienda de apps, sin esperas. \nCrea cómics, modelos 3D y voces IA donde quieras.",
-        "app_url": "https://comiccrafter.es",
-        "play_url": ""
-      }
-    },
     "featured": {
       "type": "featured-collection",
       "settings": {
@@ -195,15 +184,31 @@
         "cta_url": "",
         "cta_text": "Comenzar Gratis"
       }
+    },
+    "app_download": {
+      "type": "app-download",
+      "settings": {
+        "eyebrow": "Disponible en todas las plataformas",
+        "title": "Lleva Comic Crafter",
+        "title_gradient": "en tu bolsillo",
+        "description": "Instala la app directamente desde tu navegador.\nSin tienda de apps, sin esperas. \nCrea cómics, modelos 3D y voces IA donde quieras.",
+        "app_url": "https://comiccrafter.es",
+        "play_url": ""
+      }
+    },
+    "1774216138746ad86d": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
     "hero",
     "gallery_showcase_DTYN4t",
-    "app_download",
     "featured",
     "stats",
     "features",
-    "cta"
+    "cta",
+    "app_download",
+    "1774216138746ad86d"
   ]
 }
