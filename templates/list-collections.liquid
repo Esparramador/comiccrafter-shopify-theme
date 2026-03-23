@@ -1,29 +1,27 @@
-<div class="cc-section">
+<div class="cc-section cc-animate-fade-in">
   <div class="cc-container">
     <div class="cc-heading">
       <p class="cc-heading__eyebrow">Explorar</p>
-      <h1 class="cc-heading__title">{{ 'collections.title' | t }}</h1>
+      <h1 class="cc-heading__title">Nuestras Colecciones</h1>
+      <p class="cc-heading__subtitle">Descubre todos los productos y servicios de Comic Crafter organizados por categoria.</p>
     </div>
-
-    <div class="cc-product-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="cc-product-grid">
       {% for collection in collections %}
-        {% unless collection.handle == 'frontpage' %}
-          <a href="{{ collection.url }}" class="cc-card cc-animate-on-scroll">
-            <div class="cc-card__image" style="aspect-ratio: 16/9;">
-              {% if collection.image %}
-                <img src="{{ collection.image | image_url: width: 800 }}" alt="{{ collection.title | escape }}" loading="lazy" />
-              {% endif %}
-              <div class="cc-card__image-overlay"></div>
-            </div>
-            <div class="cc-card__body">
-              <h3 class="cc-card__title">{{ collection.title }}</h3>
-              <p class="cc-card__description">{{ collection.description | strip_html | truncate: 100 }}</p>
-              <p style="font-size: 0.75rem; color: var(--cc-purple-light); font-weight: 600; margin-top: 0.75rem;">
-                {{ collection.products_count }} productos
-              </p>
-            </div>
-          </a>
-        {% endunless %}
+        <a href="{{ collection.url }}" class="cc-product-card">
+          <div class="cc-product-card__image">
+            {% if collection.image %}
+              <img src="{{ collection.image | image_url: width: 600 }}" alt="{{ collection.title }}" loading="lazy" />
+            {% else %}
+              <div class="cc-product-card__placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m21 15-5-5L5 21"/></svg>
+              </div>
+            {% endif %}
+          </div>
+          <div class="cc-product-card__info">
+            <h3 class="cc-product-card__title">{{ collection.title }}</h3>
+            <p style="font-size:0.75rem;color:var(--cc-text-dim);">{{ collection.products_count }} productos</p>
+          </div>
+        </a>
       {% endfor %}
     </div>
   </div>

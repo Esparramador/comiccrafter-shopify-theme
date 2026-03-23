@@ -3,49 +3,52 @@
     <div class="cc-footer__top">
       <div>
         <div class="cc-footer__brand">
-          {% if settings.logo %}
-            <img src="{{ settings.logo | image_url: width: 64 }}" alt="{{ shop.name }}" />
-          {% else %}
-            <img src="{{ 'logo-app.png' | asset_url }}" alt="{{ shop.name }}" />
-          {% endif %}
-          <span class="cc-footer__brand-name">Comic Crafter <span>Shop</span></span>
+          <img src="{{ "logo-app.png" | asset_url }}" alt="{{ shop.name }}" style="width:32px;height:32px;border-radius:8px;" />
+          <span style="font-weight:800;font-size:1.125rem;">{{ shop.name }}</span>
         </div>
-        <p class="cc-footer__about">
-          Plataforma de creación con inteligencia artificial. Genera guiones, personajes, modelos 3D, voces profesionales y vídeos animados.
+        <p style="color:var(--cc-text-dim);font-size:0.8125rem;line-height:1.7;max-width:320px;">
+          Plataforma creativa con IA: comics, modelos 3D, voces profesionales, videos animados, logos y mucho mas.
         </p>
+        <div style="display:flex;gap:1rem;margin-top:1rem;">
+          <a href="https://comiccrafter.es" style="color:var(--cc-purple-light);font-size:0.75rem;font-weight:600;">comiccrafter.es</a>
+        </div>
       </div>
-
       <div>
-        <h4 class="cc-footer__heading">Tienda</h4>
-        <ul class="cc-footer__links">
-          {% for link in linklists.footer.links %}
-            <li><a href="{{ link.url }}" class="cc-footer__link">{{ link.title }}</a></li>
-          {% endfor %}
+        <h4 style="font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--cc-text-muted);margin-bottom:1rem;">Tienda</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li><a href="/collections/all" style="color:var(--cc-text-dim);font-size:0.8125rem;transition:color 0.2s;">Todos los productos</a></li>
+          <li><a href="/collections/suscripciones" style="color:var(--cc-text-dim);font-size:0.8125rem;">Suscripciones</a></li>
+          <li><a href="/collections/packs-de-creditos" style="color:var(--cc-text-dim);font-size:0.8125rem;">Packs de Creditos</a></li>
+          <li><a href="/collections/servicios-creativos-ia" style="color:var(--cc-text-dim);font-size:0.8125rem;">Servicios Creativos</a></li>
         </ul>
       </div>
-
       <div>
-        <h4 class="cc-footer__heading">Empresa</h4>
-        <ul class="cc-footer__links">
-          <li><a href="/pages/about" class="cc-footer__link">Sobre Nosotros</a></li>
-          <li><a href="/pages/contact" class="cc-footer__link">Contacto</a></li>
-          <li><a href="https://comiccrafter.es" class="cc-footer__link" target="_blank">App Comic Crafter</a></li>
+        <h4 style="font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--cc-text-muted);margin-bottom:1rem;">Plataforma</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li><a href="https://comiccrafter.es/comics" style="color:var(--cc-text-dim);font-size:0.8125rem;">Crear Comics</a></li>
+          <li><a href="https://comiccrafter.es/forge-3d" style="color:var(--cc-text-dim);font-size:0.8125rem;">Modelos 3D</a></li>
+          <li><a href="https://comiccrafter.es/voice" style="color:var(--cc-text-dim);font-size:0.8125rem;">Voces IA</a></li>
+          <li><a href="https://comiccrafter.es/video" style="color:var(--cc-text-dim);font-size:0.8125rem;">Video IA</a></li>
+          <li><a href="https://comiccrafter.es/logo-crafter" style="color:var(--cc-text-dim);font-size:0.8125rem;">Logo Crafter</a></li>
         </ul>
       </div>
-
       <div>
-        <h4 class="cc-footer__heading">Legal</h4>
-        <ul class="cc-footer__links">
-          <li><a href="/policies/privacy-policy" class="cc-footer__link">Privacidad</a></li>
-          <li><a href="/policies/terms-of-service" class="cc-footer__link">Términos</a></li>
-          <li><a href="/policies/refund-policy" class="cc-footer__link">Devoluciones</a></li>
+        <h4 style="font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--cc-text-muted);margin-bottom:1rem;">Info</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li><a href="/pages/sobre-comic-crafter" style="color:var(--cc-text-dim);font-size:0.8125rem;">Sobre nosotros</a></li>
+          <li><a href="/pages/faq-preguntas-frecuentes" style="color:var(--cc-text-dim);font-size:0.8125rem;">FAQ</a></li>
+          <li><a href="/pages/planes-y-precios" style="color:var(--cc-text-dim);font-size:0.8125rem;">Planes y Precios</a></li>
+          <li><a href="/pages/contacto" style="color:var(--cc-text-dim);font-size:0.8125rem;">Contacto</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="cc-footer__bottom">
-      <p class="cc-footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</p>
-      <p class="cc-footer__powered">Powered by OpenAI, Gemini, Tripo3D, ElevenLabs</p>
+    <div style="border-top:1px solid var(--cc-border);padding-top:1.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;">
+      <p style="font-size:0.75rem;color:var(--cc-text-dim);">&copy; {{ "now" | date: "%Y" }} {{ shop.name }}. Todos los derechos reservados.</p>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="/policies/privacy-policy" style="font-size:0.6875rem;color:var(--cc-text-dim);">Privacidad</a>
+        <a href="/policies/terms-of-service" style="font-size:0.6875rem;color:var(--cc-text-dim);">Terminos</a>
+        <a href="/policies/refund-policy" style="font-size:0.6875rem;color:var(--cc-text-dim);">Devoluciones</a>
+      </div>
     </div>
   </div>
 </footer>
