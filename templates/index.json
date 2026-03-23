@@ -37,7 +37,6 @@
           "type": "image",
           "name": "Imagen 12",
           "settings": {
-            "image": "shopify://shop_images/lumigrove---full-art.png",
             "alt": ""
           }
         },
@@ -175,16 +174,6 @@
         "subtitle": "Desde la idea inicial hasta la producción final. Cada herramienta potenciada por inteligencia artificial de última generación."
       }
     },
-    "cta": {
-      "type": "cta-banner",
-      "settings": {
-        "title": "Empieza a crear",
-        "title_gradient": "ahora mismo",
-        "subtitle": "",
-        "cta_url": "",
-        "cta_text": "Comenzar Gratis"
-      }
-    },
     "app_download": {
       "type": "app-download",
       "settings": {
@@ -195,10 +184,6 @@
         "app_url": "https://comiccrafter.es",
         "play_url": ""
       }
-    },
-    "1774216138746ad86d": {
-      "type": "_blocks",
-      "settings": {}
     }
   },
   "order": [
@@ -207,8 +192,6 @@
     "featured",
     "stats",
     "features",
-    "cta",
-    "app_download",
-    "1774216138746ad86d"
+    "app_download"
   ]
 }
