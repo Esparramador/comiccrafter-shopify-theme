@@ -27,6 +27,32 @@
       .cc-hero { min-height: 80vh; }
     </style>
   {% endif %}
+
+<!-- Comic Crafter: Account page branding -->
+<script>
+(function() {
+  if (window.location.hostname === 'account.comiccrafter.es' || document.referrer.includes('account.comiccrafter.es')) {
+    var style = document.createElement('style');
+    style.textContent = `
+/* Comic Crafter — Customer Account Branding Override */
+/* Applied via theme.liquid for account pages */
+:root {
+  --color-accent: #A855F7 !important;
+  --color-interactive: #A855F7 !important;
+  --color-primary-button: #A855F7 !important;
+  --color-primary-button-text: #FFFFFF !important;
+  --color-canvas: #06080F !important;
+  --color-canvas-subdued: #0D1117 !important;
+  --color-surface: #161B22 !important;
+  --color-text: #F8FAFC !important;
+  --color-text-subdued: #94A3B8 !important;
+  --color-border: #1E293B !important;
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}`;
+    document.head.appendChild(style);
+  }
+})();
+</script>
 </head>
 <body>
   <a href="#main-content" class="cc-sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>
