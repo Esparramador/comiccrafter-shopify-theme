@@ -33,13 +33,6 @@
             "alt": ""
           }
         },
-        "image_btwcYt": {
-          "type": "image",
-          "name": "Imagen 12",
-          "settings": {
-            "alt": ""
-          }
-        },
         "image_Ygc3m3": {
           "type": "image",
           "name": "Imagen 11",
@@ -130,7 +123,6 @@
       },
       "block_order": [
         "image_gCGT3i",
-        "image_btwcYt",
         "image_Ygc3m3",
         "image_xyKCNX",
         "image_BkPW6k",
@@ -146,7 +138,7 @@
       "name": "Galería Showcase",
       "settings": {
         "eyebrow": "",
-        "title": "Diseñado con Comic Crafter"
+        "title": "Creado con Comic Crafter"
       }
     },
     "featured": {
