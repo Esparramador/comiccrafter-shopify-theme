@@ -43,5 +43,69 @@
   {% render 'footer' %}
 
   <script src="{{ 'comic-crafter.js' | asset_url }}" defer></script>
+<!-- Comic Crafter: Redirect Shopify login to app -->
+<script>
+(function() {
+  var APP_URL = 'https://comiccrafter.es';
+  var ACCOUNT_DOMAINS = ['account.comiccrafter.es', 'shopify.com/authentication'];
+
+  function interceptLoginLinks() {
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      var href = link.getAttribute('href') || '';
+      var isLoginLink = href.includes('/account') || 
+                        href.includes('account.comiccrafter.es') ||
+                        href.includes('/authentication') ||
+                        (href.includes('customer') && href.includes('login'));
+      
+      if (isLoginLink && !link.dataset.ccIntercepted) {
+        link.dataset.ccIntercepted = 'true';
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = APP_URL + '/login?from=shopify';
+        });
+      }
+    });
+
+    var buttons = document.querySelectorAll('button, [role="button"]');
+    buttons.forEach(function(btn) {
+      var text = (btn.textContent || '').toLowerCase().trim();
+      if ((text.includes('iniciar sesi') || text.includes('sign in') || text.includes('log in') || text.includes('mi cuenta') || text.includes('my account')) && !btn.dataset.ccIntercepted) {
+        btn.dataset.ccIntercepted = 'true';
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = APP_URL + '/login?from=shopify';
+        });
+      }
+    });
+  }
+
+  function interceptAccountRedirects() {
+    if (window.location.hostname === 'account.comiccrafter.es') {
+      window.location.href = APP_URL + '/mis-pedidos';
+      return;
+    }
+    var currentUrl = window.location.href;
+    for (var i = 0; i < ACCOUNT_DOMAINS.length; i++) {
+      if (currentUrl.includes(ACCOUNT_DOMAINS[i])) {
+        window.location.href = APP_URL + '/login?from=shopify';
+        return;
+      }
+    }
+  }
+
+  interceptAccountRedirects();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', interceptLoginLinks);
+  } else {
+    interceptLoginLinks();
+  }
+
+  var observer = new MutationObserver(function() { interceptLoginLinks(); });
+  observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
+})();
+</script>
 </body>
 </html>
