@@ -1,27 +1,38 @@
-<div class="cc-section">
+<div class="cc-section cc-animate-fade-in">
   <div class="cc-container">
+    <nav class="cc-breadcrumb">
+      <a href="/">Inicio</a>
+      <span>&rsaquo;</span>
+      {% if collection %}
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+        <span>&rsaquo;</span>
+      {% endif %}
+      <span class="cc-breadcrumb__current">{{ product.title | truncate: 40 }}</span>
+    </nav>
+
     <div class="cc-product">
       <div class="cc-product__gallery">
-        {% if product.featured_image %}
-          <img
-            src="{{ product.featured_image | image_url: width: 1200 }}"
-            alt="{{ product.featured_image.alt | escape }}"
-            width="1200"
-            height="1200"
-          />
-        {% endif %}
+        <div class="cc-product__main-image" id="product-main-image">
+          {% if product.featured_image %}
+            <img
+              src="{{ product.featured_image | image_url: width: 1200 }}"
+              alt="{{ product.featured_image.alt | escape }}"
+              id="main-product-img"
+              style="border-radius: var(--cc-radius-lg); width: 100%;"
+            />
+          {% endif %}
+        </div>
 
         {% if product.images.size > 1 %}
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; padding: 0.5rem;">
+          <div class="cc-product__thumbs" id="product-thumbs">
             {% for image in product.images %}
-              <div style="aspect-ratio: 1; border-radius: 0.5rem; overflow: hidden; border: 1px solid var(--cc-border); cursor: pointer;">
-                <img
-                  src="{{ image | image_url: width: 300 }}"
-                  alt="{{ image.alt | escape }}"
-                  loading="lazy"
-                  style="width: 100%; height: 100%; object-fit: cover;"
-                />
-              </div>
+              <button
+                class="cc-product__thumb {% if forloop.first %}cc-product__thumb--active{% endif %}"
+                onclick="document.getElementById('main-product-img').src='{{ image | image_url: width: 1200 }}'; document.querySelectorAll('.cc-product__thumb').forEach(t=>t.classList.remove('cc-product__thumb--active')); this.classList.add('cc-product__thumb--active')"
+                aria-label="Ver imagen {{ forloop.index }}"
+              >
+                <img src="{{ image | image_url: width: 200 }}" alt="{{ image.alt | escape }}" loading="lazy" />
+              </button>
             {% endfor %}
           </div>
         {% endif %}
@@ -39,7 +50,7 @@
           {% if product.compare_at_price > product.price %}
             <span class="cc-product__compare-price">{{ product.compare_at_price | money }}</span>
             <span class="cc-badge cc-badge--green">
-              -{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}%
+              -{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% OFF
             </span>
           {% endif %}
         </div>
@@ -51,40 +62,60 @@
         {% if product.available %}
           <form action="/cart/add" method="post" class="cc-product__form">
             {% if product.variants.size > 1 %}
-              {% for option in product.options_with_values %}
-                <div>
-                  <label class="cc-label">{{ option.name }}</label>
-                  <select name="id" class="cc-input" style="cursor: pointer;">
-                    {% for variant in product.variants %}
-                      <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
-                        {{ variant.title }} — {{ variant.price | money }}
-                        {% unless variant.available %} (Agotado){% endunless %}
-                      </option>
-                    {% endfor %}
-                  </select>
-                </div>
-              {% endfor %}
+              <div>
+                <label class="cc-label" for="variant-select">Variante</label>
+                <select name="id" id="variant-select" class="cc-input">
+                  {% for variant in product.variants %}
+                    <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                      {{ variant.title }} — {{ variant.price | money }}
+                      {% unless variant.available %} (Agotado){% endunless %}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
             {% else %}
-              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
             {% endif %}
 
-            <div class="cc-product__quantity">
-              <button type="button" class="cc-product__quantity-btn" data-action="decrease">−</button>
-              <input type="number" name="quantity" value="1" min="1" class="cc-product__quantity-input" />
-              <button type="button" class="cc-product__quantity-btn" data-action="increase">+</button>
+            <div>
+              <label class="cc-label">Cantidad</label>
+              <div class="cc-product__quantity">
+                <button type="button" class="cc-product__quantity-btn" onclick="var i=this.nextElementSibling;i.value=Math.max(1,parseInt(i.value)-1)">&minus;</button>
+                <input type="number" name="quantity" value="1" min="1" class="cc-product__quantity-input" />
+                <button type="button" class="cc-product__quantity-btn" onclick="var i=this.previousElementSibling;i.value=parseInt(i.value)+1">+</button>
+              </div>
             </div>
 
-            <button type="submit" class="cc-btn cc-btn--primary cc-btn--lg cc-btn--full">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-              {{ 'products.add_to_cart' | t }}
+            <button type="submit" class="cc-btn cc-btn--primary cc-btn--lg" style="width:100%;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              Añadir al Carrito — {{ product.price | money }}
             </button>
           </form>
         {% else %}
-          <button disabled class="cc-btn cc-btn--ghost cc-btn--lg cc-btn--full" style="opacity: 0.5; cursor: not-allowed;">
-            {{ 'products.sold_out' | t }}
-          </button>
+          <button class="cc-btn cc-btn--ghost cc-btn--lg" disabled style="width:100%;opacity:0.5;">Agotado</button>
+        {% endif %}
+
+        {% if product.tags.size > 0 %}
+          <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            {% for tag in product.tags %}
+              <span class="cc-badge cc-badge--purple">{{ tag }}</span>
+            {% endfor %}
+          </div>
         {% endif %}
       </div>
     </div>
+
+    {% if collection %}
+      <div style="margin-top: 4rem;">
+        <h2 class="cc-heading__title" style="font-size:1.5rem;margin-bottom:2rem;">Más de {{ collection.title }}</h2>
+        <div class="cc-product-grid">
+          {% for related in collection.products limit: 4 %}
+            {% unless related.id == product.id %}
+              {% render 'product-card', product: related %}
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
   </div>
 </div>
