@@ -1,151 +1,39 @@
-<section class="cc-section cc-carousel-section" id="carousel-{{ section.id }}">
+<section class="cc-section">
   <div class="cc-container">
     <div class="cc-heading">
       <p class="cc-heading__eyebrow">{{ section.settings.eyebrow | default: 'Galería Dinámica' }}</p>
       <h2 class="cc-heading__title">{{ section.settings.title | default: 'Creado con Comic Crafter' }}</h2>
     </div>
 
-    <div class="cc-carousel" data-carousel="{{ section.id }}">
-      <div class="cc-carousel__track">
+    <div class="cc-gallery-scroll">
+      <div class="cc-gallery-scroll__track">
         {% for block in section.blocks %}
-          <div class="cc-carousel__slide {% if forloop.first %}active{% endif %}">
-            {% if block.settings.image %}
-              <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.alt | escape }}" loading="lazy" />
-            {% else %}
-              <div class="cc-carousel__placeholder"></div>
-            {% endif %}
+          <div class="cc-gallery-scroll__item">
+            <div class="cc-gallery-scroll__item-inner">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.alt | escape }}" loading="lazy" />
+              {% else %}
+                <div style="width:100%;height:100%;background:rgba(255,255,255,0.05);"></div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+        {% comment %} Duplicate for infinite scroll {% endcomment %}
+        {% for block in section.blocks %}
+          <div class="cc-gallery-scroll__item">
+            <div class="cc-gallery-scroll__item-inner">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.alt | escape }}" loading="lazy" />
+              {% endif %}
+            </div>
           </div>
         {% endfor %}
       </div>
-
-      <button class="cc-carousel__arrow cc-carousel__arrow--prev" aria-label="Anterior">&#10094;</button>
-      <button class="cc-carousel__arrow cc-carousel__arrow--next" aria-label="Siguiente">&#10095;</button>
-
-      <div class="cc-carousel__dots">
-        {% for block in section.blocks %}
-          <button class="cc-carousel__dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Ir a imagen {{ forloop.index }}"></button>
-        {% endfor %}
-      </div>
+      <div class="cc-gallery-scroll__fade-left"></div>
+      <div class="cc-gallery-scroll__fade-right"></div>
     </div>
   </div>
 </section>
-
-<style>
-  .cc-carousel {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #0a0a0f;
-  }
-  .cc-carousel__track {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .cc-carousel__slide {
-    min-width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-  }
-  .cc-carousel__slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .cc-carousel__placeholder {
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.05);
-  }
-  .cc-carousel__arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    border: 2px solid #00f0ff;
-    color: #00f0ff;
-    font-size: 1.4rem;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    transition: background 0.3s, box-shadow 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .cc-carousel__arrow:hover {
-    background: #00f0ff;
-    color: #000;
-    box-shadow: 0 0 16px #00f0ff;
-  }
-  .cc-carousel__arrow--prev { left: 16px; }
-  .cc-carousel__arrow--next { right: 16px; }
-  .cc-carousel__dots {
-    position: absolute;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-  }
-  .cc-carousel__dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid #00f0ff;
-    background: transparent;
-    cursor: pointer;
-    transition: background 0.3s, box-shadow 0.3s;
-    padding: 0;
-  }
-  .cc-carousel__dot.active {
-    background: #00f0ff;
-    box-shadow: 0 0 8px #00f0ff;
-  }
-</style>
-
-<script>
-  (function() {
-    const carousel = document.querySelector('[data-carousel="{{ section.id }}"]');
-    if (!carousel) return;
-
-    const track = carousel.querySelector('.cc-carousel__track');
-    const slides = carousel.querySelectorAll('.cc-carousel__slide');
-    const dots = carousel.querySelectorAll('.cc-carousel__dot');
-    const prevBtn = carousel.querySelector('.cc-carousel__arrow--prev');
-    const nextBtn = carousel.querySelector('.cc-carousel__arrow--next');
-    let current = 0;
-    let autoplay;
-
-    function goTo(index) {
-      slides[current].classList.remove('active');
-      dots[current]?.classList.remove('active');
-      current = (index + slides.length) % slides.length;
-      track.style.transform = `translateX(-${current * 100}%)`;
-      slides[current].classList.add('active');
-      dots[current]?.classList.add('active');
-    }
-
-    function startAutoplay() {
-      autoplay = setInterval(() => goTo(current + 1), 3000);
-    }
-
-    function stopAutoplay() {
-      clearInterval(autoplay);
-    }
-
-    prevBtn.addEventListener('click', () => { stopAutoplay(); goTo(current - 1); startAutoplay(); });
-    nextBtn.addEventListener('click', () => { stopAutoplay(); goTo(current + 1); startAutoplay(); });
-    dots.forEach((dot, i) => dot.addEventListener('click', () => { stopAutoplay(); goTo(i); startAutoplay(); }));
-    carousel.addEventListener('mouseenter', stopAutoplay);
-    carousel.addEventListener('mouseleave', startAutoplay);
-
-    startAutoplay();
-  })();
-</script>
 
 {% schema %}
 {
