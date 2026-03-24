@@ -16,9 +16,9 @@
         "title": "Crea Universos Enteros",
         "title_gradient": "Haz tus ideas realidad",
         "subtitle": "Cómics, Manga, Animación y Personajes 3D en segundos. Tu imaginación, nuestra inteligencia.",
-        "cta_url": "",
+        "cta_url": "https://comiccrafter.es",
         "cta_text": "Empieza Gratis",
-        "cta2_url": "",
+        "cta2_url": "https://comiccrafter.es/#planes",
         "cta2_text": "Ver Planes"
       }
     },
@@ -113,8 +113,9 @@
             "alt": "Prueba"
           }
         },
-        "image_6YxQrF": {
+        "image_mRJKaL": {
           "type": "image",
+          "name": "Imagen 1",
           "settings": {
             "image": "shopify://shop_images/imagen-1773957722799_65e282bb-4eb0-4ab6-a6ea-e9f41ade964d.png",
             "alt": ""
@@ -133,13 +134,9 @@
         "image_8ibG7D",
         "image_gjNTtF",
         "image_n8UTem",
-        "image_6YxQrF"
+        "image_mRJKaL"
       ],
-      "name": "Galería Showcase",
-      "settings": {
-        "eyebrow": "",
-        "title": "Creado con Comic Crafter"
-      }
+      "settings": {}
     },
     "featured": {
       "type": "featured-collection",
@@ -148,17 +145,123 @@
         "title": "Productos Destacados",
         "title_gradient": "",
         "subtitle": "",
-        "collection": "",
-        "limit": 8,
+        "collection": "all",
+        "limit": 4,
         "show_view_all": true
       }
     },
     "stats": {
       "type": "stats-bar",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "100+",
+            "label": "Voces IA Disponibles"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "29",
+            "label": "Idiomas Soportados"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "8+",
+            "label": "Estilos de Arte"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": "6",
+            "label": "Herramientas IA"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
       "settings": {}
     },
     "features": {
       "type": "features-grid",
+      "blocks": {
+        "feat_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Guiones Inteligentes",
+            "description": "La IA genera guiones cinematográficos completos con estructura de 3 actos, diálogos naturales y direcciones de arte.",
+            "link": "https://comiccrafter.es",
+            "color_from": "#9333ea",
+            "color_to": "#ec4899"
+          }
+        },
+        "feat_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Personajes Persistentes",
+            "description": "Crea personajes con apariencia consistente. Sube fotos reales o genera desde cero con IA.",
+            "link": "https://comiccrafter.es/personajes",
+            "color_from": "#ec4899",
+            "color_to": "#f43f5e"
+          }
+        },
+        "feat_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Modelos 3D desde Texto",
+            "description": "Transforma descripciones en modelos 3D listos para usar. Exporta en GLB para animación o impresión.",
+            "link": "https://comiccrafter.es/forge-3d",
+            "color_from": "#3b82f6",
+            "color_to": "#06b6d4"
+          }
+        },
+        "feat_4": {
+          "type": "feature",
+          "settings": {
+            "title": "Voces IA Profesionales",
+            "description": "Más de 100 voces en 29 idiomas con calidad de estudio profesional. Narraciones, diálogos y doblajes.",
+            "link": "https://comiccrafter.es/voice",
+            "color_from": "#10b981",
+            "color_to": "#14b8a6"
+          }
+        },
+        "feat_5": {
+          "type": "feature",
+          "settings": {
+            "title": "Vídeo & Animación",
+            "description": "Un director IA te guía para crear cortos animados y vídeos cinematográficos con efectos VFX.",
+            "link": "https://comiccrafter.es/video",
+            "color_from": "#f97316",
+            "color_to": "#f59e0b"
+          }
+        },
+        "feat_6": {
+          "type": "feature",
+          "settings": {
+            "title": "Múltiples Estilos",
+            "description": "Manga, anime, noir, fantasía oscura, western, chibi y más. Cada estilo siempre consistente.",
+            "link": "https://comiccrafter.es",
+            "color_from": "#d946ef",
+            "color_to": "#ec4899"
+          }
+        }
+      },
+      "block_order": [
+        "feat_1",
+        "feat_2",
+        "feat_3",
+        "feat_4",
+        "feat_5",
+        "feat_6"
+      ],
       "settings": {
         "badge_text": "Todas las herramientas que necesitas",
         "title": "Un Estudio Completo de",
@@ -172,8 +275,8 @@
         "eyebrow": "Disponible en todas las plataformas",
         "title": "Lleva Comic Crafter",
         "title_gradient": "en tu bolsillo",
-        "description": "Instala la app directamente desde tu navegador.\nSin tienda de apps, sin esperas. \nCrea cómics, modelos 3D y voces IA donde quieras.",
-        "app_url": "https://comiccrafter.es",
+        "description": "Instala la app directamente desde tu navegador.\nSin tienda de apps, sin esperas.\nCrea cómics, modelos 3D y voces IA donde quieras.",
+        "app_url": "https://comiccrafter.es/",
         "play_url": ""
       }
     }
