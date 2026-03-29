@@ -53,6 +53,12 @@
   }
 })();
 </script>
+<!-- CC-FIX-START -->
+<style>
+.cc-mobile-menu{display:none!important;flex-direction:column;background:#111322;border-top:1px solid rgba(255,255,255,.05);padding:1rem;gap:.25rem;position:fixed;top:56px;left:0;right:0;z-index:999;box-shadow:0 8px 32px rgba(0,0,0,.6);max-height:calc(100vh - 56px);overflow-y:auto}
+.cc-mobile-menu.active{display:flex!important}
+</style>
+<!-- CC-FIX-END -->
 </head>
 <body>
   <a href="#main-content" class="cc-sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>
