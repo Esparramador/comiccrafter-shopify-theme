@@ -141,12 +141,12 @@
     "featured": {
       "type": "featured-collection",
       "settings": {
-        "eyebrow": "Lo Más Popular",
+        "eyebrow": "✨ Tienda ComicCrafter",
         "title": "Productos Destacados",
         "title_gradient": "",
-        "subtitle": "",
-        "collection": "all",
-        "limit": 4,
+        "subtitle": "Servicios creativos y productos únicos creados con inteligencia artificial",
+        "collection": "comic-crafter",
+        "limit": 8,
         "show_view_all": true
       }
     },
