@@ -28,37 +28,12 @@
     </style>
   {% endif %}
 
-<!-- Comic Crafter: Account page branding -->
-<script>
-(function() {
-  if (window.location.hostname === 'account.comiccrafter.es' || document.referrer.includes('account.comiccrafter.es')) {
-    var style = document.createElement('style');
-    style.textContent = `
-/* Comic Crafter — Customer Account Branding Override */
-/* Applied via theme.liquid for account pages */
-:root {
-  --color-accent: #A855F7 !important;
-  --color-interactive: #A855F7 !important;
-  --color-primary-button: #A855F7 !important;
-  --color-primary-button-text: #FFFFFF !important;
-  --color-canvas: #06080F !important;
-  --color-canvas-subdued: #0D1117 !important;
-  --color-surface: #161B22 !important;
-  --color-text: #F8FAFC !important;
-  --color-text-subdued: #94A3B8 !important;
-  --color-border: #1E293B !important;
-  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-}`;
-    document.head.appendChild(style);
-  }
-})();
-</script>
-<!-- CC-FIX-START -->
 <style>
 .cc-mobile-menu{display:none!important;flex-direction:column;background:#111322;border-top:1px solid rgba(255,255,255,.05);padding:1rem;gap:.25rem;position:fixed;top:56px;left:0;right:0;z-index:999;box-shadow:0 8px 32px rgba(0,0,0,.6);max-height:calc(100vh - 56px);overflow-y:auto}
 .cc-mobile-menu.active{display:flex!important}
+.cc-login-toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;padding:1rem 2rem;border-radius:12px;font-weight:700;font-size:0.95rem;z-index:10000;box-shadow:0 8px 32px rgba(124,58,237,.5);animation:ccToastIn .4s ease;pointer-events:none}
+@keyframes ccToastIn{from{opacity:0;transform:translateX(-50%) translateY(-20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 </style>
-<!-- CC-FIX-END -->
 </head>
 <body>
   <a href="#main-content" class="cc-sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>
@@ -75,6 +50,64 @@
   {% render 'footer' %}
 
   <script src="{{ 'comic-crafter.js' | asset_url }}" defer></script>
+
+  {% unless customer %}
+  <script>
+  (function(){
+    function showLoginToast(msg) {
+      var t = document.createElement('div');
+      t.className = 'cc-login-toast';
+      t.textContent = msg || 'Inicia sesión para continuar con tu compra';
+      document.body.appendChild(t);
+      setTimeout(function(){ t.remove(); }, 3500);
+    }
+
+    function redirectToLogin(returnUrl) {
+      var url = '/account/login';
+      if (returnUrl) url += '?checkout_url=' + encodeURIComponent(returnUrl);
+      window.location.href = url;
+    }
+
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      if (!form || !form.action) return;
+      var action = form.action || '';
+      if (action.indexOf('/cart/add') !== -1 || action.indexOf('/cart') !== -1) {
+        var isCheckout = form.querySelector('[name="checkout"]') && document.activeElement && document.activeElement.name === 'checkout';
+        if (isCheckout) {
+          e.preventDefault();
+          e.stopPropagation();
+          showLoginToast('Debes iniciar sesión para finalizar tu compra');
+          setTimeout(function(){ redirectToLogin('/cart'); }, 1200);
+          return false;
+        }
+      }
+    }, true);
+
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest ? e.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('/checkout') !== -1) {
+        e.preventDefault();
+        e.stopPropagation();
+        showLoginToast('Debes iniciar sesión para finalizar tu compra');
+        setTimeout(function(){ redirectToLogin('/cart'); }, 1200);
+        return false;
+      }
+    }, true);
+
+    var origFetch = window.fetch;
+    window.fetch = function(url, opts) {
+      if (typeof url === 'string' && url.indexOf('/checkout') !== -1 && opts && opts.method && opts.method.toUpperCase() !== 'GET') {
+        showLoginToast('Debes iniciar sesión para comprar');
+        setTimeout(function(){ redirectToLogin('/cart'); }, 1200);
+        return Promise.reject(new Error('Login required'));
+      }
+      return origFetch.apply(this, arguments);
+    };
+  })();
+  </script>
+  {% endunless %}
 </body>
 </html>
-
