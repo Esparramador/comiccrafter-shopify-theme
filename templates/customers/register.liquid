@@ -2,10 +2,11 @@
   <div class="cc-container" style="max-width: 440px;">
     <div class="cc-heading" style="margin-bottom: 2rem;">
       <h1 class="cc-heading__title">{{ 'customer.register' | t }}</h1>
+      <p style="color:var(--cc-text-dim);font-size:0.9rem;margin-top:0.5rem;">Crea tu cuenta y empieza a crear</p>
     </div>
 
     <div class="cc-card" style="padding: 2rem;">
-      {% form 'create_customer' %}
+      {% form 'create_customer', return_to: '/' %}
         {{ form.errors | default_errors }}
 
         <div style="display: flex; flex-direction: column; gap: 1.25rem;">
@@ -30,7 +31,7 @@
           </div>
 
           <button type="submit" class="cc-btn cc-btn--primary cc-btn--full">
-            {{ 'customer.register' | t }}
+            Crear Cuenta
           </button>
 
           <p style="text-align: center; font-size: 0.8125rem; color: var(--cc-text-dim);">

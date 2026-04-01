@@ -6,7 +6,7 @@
     </div>
 
     <div class="cc-card" style="padding: 2rem;">
-      {% form 'customer_login' %}
+      {% form 'customer_login', return_to: '/' %}
         {{ form.errors | default_errors }}
 
         <div style="display: flex; flex-direction: column; gap: 1.25rem;">
@@ -45,6 +45,12 @@
           input.value = checkoutUrl;
           form.appendChild(input);
 
+          var returnInput = document.createElement('input');
+          returnInput.type = 'hidden';
+          returnInput.name = 'return_to';
+          returnInput.value = checkoutUrl;
+          form.appendChild(returnInput);
+
           var banner = document.createElement('div');
           banner.style.cssText = 'margin-bottom:1.5rem;padding:1rem;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1));border:1px solid rgba(124,58,237,.2);text-align:center;font-size:0.875rem;color:var(--cc-purple-light);font-weight:600;';
           banner.textContent = 'Inicia sesión para continuar con tu compra';
@@ -52,7 +58,7 @@
         }
       }
 
-      var returnUrl = params.get('return_url') || document.referrer;
+      var returnUrl = params.get('return_url');
       if (returnUrl && !checkoutUrl) {
         var form2 = document.querySelector('form[action*="login"]') || document.querySelector('form');
         if (form2) {
