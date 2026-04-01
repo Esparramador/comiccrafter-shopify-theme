@@ -2,6 +2,7 @@
   <div class="cc-container" style="max-width: 440px;">
     <div class="cc-heading" style="margin-bottom: 2rem;">
       <h1 class="cc-heading__title">{{ 'customer.log_in' | t }}</h1>
+      <p style="color:var(--cc-text-dim);font-size:0.9rem;margin-top:0.5rem;">Accede a tu cuenta para gestionar tus pedidos y créditos</p>
     </div>
 
     <div class="cc-card" style="padding: 2rem;">
@@ -30,5 +31,39 @@
         </div>
       {% endform %}
     </div>
+
+    <script>
+    (function(){
+      var params = new URLSearchParams(window.location.search);
+      var checkoutUrl = params.get('checkout_url');
+      if (checkoutUrl) {
+        var form = document.querySelector('form[action*="login"]') || document.querySelector('form');
+        if (form) {
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'checkout_url';
+          input.value = checkoutUrl;
+          form.appendChild(input);
+
+          var banner = document.createElement('div');
+          banner.style.cssText = 'margin-bottom:1.5rem;padding:1rem;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1));border:1px solid rgba(124,58,237,.2);text-align:center;font-size:0.875rem;color:var(--cc-purple-light);font-weight:600;';
+          banner.textContent = 'Inicia sesión para continuar con tu compra';
+          form.parentElement.insertBefore(banner, form);
+        }
+      }
+
+      var returnUrl = params.get('return_url') || document.referrer;
+      if (returnUrl && !checkoutUrl) {
+        var form2 = document.querySelector('form[action*="login"]') || document.querySelector('form');
+        if (form2) {
+          var input2 = document.createElement('input');
+          input2.type = 'hidden';
+          input2.name = 'return_to';
+          input2.value = returnUrl;
+          form2.appendChild(input2);
+        }
+      }
+    })();
+    </script>
   </div>
 </div>
