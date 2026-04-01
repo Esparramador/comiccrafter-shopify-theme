@@ -21,7 +21,11 @@
           <span class="cc-header__cart-count">{{ cart.item_count }}</span>
         {% endif %}
       </a>
-      <a href="https://comiccrafter.es/login?from=shopify" class="cc-header__link cc-header__link--active" style="background:linear-gradient(135deg,var(--cc-purple),var(--cc-pink));color:#fff;padding:0.5rem 1rem;border-radius:var(--cc-radius-full);font-weight:700;font-size:0.8125rem;">Crear con IA</a>
+      {% if customer %}
+        <a href="/account" class="cc-header__link cc-header__link--active" style="background:linear-gradient(135deg,var(--cc-purple),var(--cc-pink));color:#fff;padding:0.5rem 1rem;border-radius:var(--cc-radius-full);font-weight:700;font-size:0.8125rem;">Mi Cuenta</a>
+      {% else %}
+        <a href="/account/login" class="cc-header__link cc-header__link--active" style="background:linear-gradient(135deg,var(--cc-purple),var(--cc-pink));color:#fff;padding:0.5rem 1rem;border-radius:var(--cc-radius-full);font-weight:700;font-size:0.8125rem;">Iniciar Sesión</a>
+      {% endif %}
       <button class="cc-header__menu-toggle" aria-label="Abrir menú" onclick="document.querySelector('.cc-mobile-menu').classList.toggle('active')">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -37,5 +41,9 @@
   <a href="/pages/sobre-comic-crafter" class="cc-mobile-menu__link">Sobre Nosotros</a>
   <a href="/pages/faq-preguntas-frecuentes" class="cc-mobile-menu__link">FAQ</a>
   <a href="/pages/contacto" class="cc-mobile-menu__link">Contacto</a>
-  <a href="https://comiccrafter.es/login?from=shopify" class="cc-mobile-menu__link cc-mobile-menu__link--cta">Crear con IA</a>
+  {% if customer %}
+    <a href="/account" class="cc-mobile-menu__link cc-mobile-menu__link--cta">Mi Cuenta</a>
+  {% else %}
+    <a href="/account/login" class="cc-mobile-menu__link cc-mobile-menu__link--cta">Iniciar Sesión</a>
+  {% endif %}
 </nav>
