@@ -16,9 +16,9 @@
         "title": "Crea Universos Enteros",
         "title_gradient": "Haz tus ideas realidad",
         "subtitle": "Cómics, Manga, Animación y Personajes 3D en segundos. Tu imaginación, nuestra inteligencia.",
-        "cta_url": "https://comiccrafter.es",
+        "cta_url": "/account/register",
         "cta_text": "Empieza Gratis",
-        "cta2_url": "https://comiccrafter.es/#planes",
+        "cta2_url": "/collections/suscripciones",
         "cta2_text": "Ver Planes"
       }
     },
