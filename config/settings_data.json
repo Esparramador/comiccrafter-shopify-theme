@@ -23,7 +23,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "show_announcement": false,
+          "show_announcement": true,
           "announcement_text": "⚡ Envío gratis en pedidos superiores a 50€ — Crea con IA, materializa con nosotros"
         }
       }
