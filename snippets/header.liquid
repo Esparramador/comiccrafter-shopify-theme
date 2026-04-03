@@ -6,13 +6,13 @@
     </a>
 
     <nav class="cc-header__nav">
-      <a href="/" class="cc-header__link{% if page.handle == '/' %} cc-header__link--active{% endif %}">Inicio</a>
-      <a href="/collections" class="cc-header__link{% if page.handle == '/collections' %} cc-header__link--active{% endif %}">Tienda</a>
-      <a href="/collections/suscripciones" class="cc-header__link{% if page.handle == '/collections/suscripciones' %} cc-header__link--active{% endif %}">Planes</a>
-      <a href="/collections/packs-de-creditos" class="cc-header__link{% if page.handle == '/collections/packs-de-creditos' %} cc-header__link--active{% endif %}">Créditos</a>
-      <a href="/pages/sobre-comic-crafter" class="cc-header__link{% if page.handle == 'sobre-comic-crafter' %} cc-header__link--active{% endif %}">Sobre Nosotros</a>
-      <a href="/pages/faq-preguntas-frecuentes" class="cc-header__link{% if page.handle == 'faq-preguntas-frecuentes' %} cc-header__link--active{% endif %}">FAQ</a>
-      <a href="/pages/contacto" class="cc-header__link{% if page.handle == 'contacto' %} cc-header__link--active{% endif %}">Contacto</a>
+      <a href="/" class="cc-header__link{% if request.path == '/' %} cc-header__link--active{% endif %}">Inicio</a>
+      <a href="/collections" class="cc-header__link{% if request.path contains '/collections' and request.path != '/collections/suscripciones' and request.path != '/collections/packs-de-creditos' %} cc-header__link--active{% endif %}">Tienda</a>
+      <a href="/pages/planes-y-precios" class="cc-header__link{% if request.path contains '/planes-y-precios' %} cc-header__link--active{% endif %}">Planes</a>
+      <a href="/collections/packs-de-creditos" class="cc-header__link{% if request.path contains '/packs-de-creditos' %} cc-header__link--active{% endif %}">Créditos</a>
+      <a href="/game-hub" class="cc-header__link{% if request.path contains '/game-hub' %} cc-header__link--active{% endif %}">Game Hub</a>
+      <a href="/crafter-worlds" class="cc-header__link{% if request.path contains '/crafter-worlds' %} cc-header__link--active{% endif %}">Mundos 3D</a>
+      <a href="/pages/contacto" class="cc-header__link{% if request.path contains '/contacto' %} cc-header__link--active{% endif %}">Contacto</a>
     </nav>
 
     <div class="cc-header__actions">
@@ -37,11 +37,13 @@
 <nav class="cc-mobile-menu">
   <a href="/" class="cc-mobile-menu__link">Inicio</a>
   <a href="/collections" class="cc-mobile-menu__link">Tienda</a>
-  <a href="/collections/suscripciones" class="cc-mobile-menu__link">Planes</a>
+  <a href="/pages/planes-y-precios" class="cc-mobile-menu__link">Planes</a>
   <a href="/collections/packs-de-creditos" class="cc-mobile-menu__link">Créditos</a>
-  <a href="/pages/sobre-comic-crafter" class="cc-mobile-menu__link">Sobre Nosotros</a>
-  <a href="/pages/faq-preguntas-frecuentes" class="cc-mobile-menu__link">FAQ</a>
+  <a href="/game-hub" class="cc-mobile-menu__link">Game Hub</a>
+  <a href="/crafter-worlds" class="cc-mobile-menu__link">Mundos 3D</a>
   <a href="/pages/contacto" class="cc-mobile-menu__link">Contacto</a>
+  <a href="/pages/faq-preguntas-frecuentes" class="cc-mobile-menu__link">FAQ</a>
+  <a href="/pages/sobre-comic-crafter" class="cc-mobile-menu__link">Sobre Nosotros</a>
   {% if customer %}
     <a href="/account" class="cc-mobile-menu__link cc-mobile-menu__link--cta">Mi Cuenta</a>
   {% else %}
