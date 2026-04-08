@@ -7,7 +7,8 @@
 
     <nav class="cc-header__nav">
       <a href="/" class="cc-header__link{% if request.path == '/' %} cc-header__link--active{% endif %}">Inicio</a>
-      <a href="/collections" class="cc-header__link{% if request.path contains '/collections' and request.path != '/collections/suscripciones' and request.path != '/collections/packs-de-creditos' %} cc-header__link--active{% endif %}">Tienda</a>
+      <a href="/collections" class="cc-header__link{% if request.path contains '/collections' and request.path != '/collections/suscripciones' and request.path != '/collections/packs-de-creditos' and request.path != '/collections/comic-crafter' %} cc-header__link--active{% endif %}">Tienda</a>
+      <a href="/collections/comic-crafter" class="cc-header__link{% if request.path contains '/comic-crafter' %} cc-header__link--active{% endif %}">Comic Crafter</a>
       <a href="/pages/planes-y-precios" class="cc-header__link{% if request.path contains '/planes-y-precios' %} cc-header__link--active{% endif %}">Planes</a>
       <a href="/collections/packs-de-creditos" class="cc-header__link{% if request.path contains '/packs-de-creditos' %} cc-header__link--active{% endif %}">Créditos</a>
       <a href="/game-hub" class="cc-header__link{% if request.path contains '/game-hub' %} cc-header__link--active{% endif %}">Game Hub</a>
@@ -37,6 +38,7 @@
 <nav class="cc-mobile-menu">
   <a href="/" class="cc-mobile-menu__link">Inicio</a>
   <a href="/collections" class="cc-mobile-menu__link">Tienda</a>
+  <a href="/collections/comic-crafter" class="cc-mobile-menu__link">Comic Crafter</a>
   <a href="/pages/planes-y-precios" class="cc-mobile-menu__link">Planes</a>
   <a href="/collections/packs-de-creditos" class="cc-mobile-menu__link">Créditos</a>
   <a href="/game-hub" class="cc-mobile-menu__link">Game Hub</a>
